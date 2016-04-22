@@ -42,6 +42,20 @@ INSTALLED_APPS = [
     'rest_framework_swagger'
 ]
 
+REST_FRAMEWORK = {
+
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework_xml.parsers.XMLParser',
+    ),
+
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework_xml.renderers.XMLRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
