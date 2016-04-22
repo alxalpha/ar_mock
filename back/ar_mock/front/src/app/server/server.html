@@ -1,0 +1,49 @@
+
+<h1 class="title-page">Server manager</h1>
+
+<section class="container">
+
+    <div class="container_child-1" style="max-width:500px;background-color : #555;">
+        <form name="requestMockForm" >
+            <span class="fa fa-arrow-circle-o-left" style="position:absolute;top:5px;right:5px;font-size:1.3em"></span>
+            <h2 class="title-secondary"> Ajouter un server </h2>
+            <div style="margin-top:50px">
+                <input  type="text" name="serverName" class="input-url" ng-model="serverController.serverToAdd.name" placeholder="Server name"/>
+
+                <textarea style="background-color:transparent;color:white;width:90%;min-height:100px;border-radius:10px;" class="voffset2" ng-model="serverController.serverToAdd.description">
+
+                </textarea>
+
+                <div class="voffset2" style="text-align:right">
+                    <input type="submit" class="btn"  value="Valider" ng-click="onAddServer()"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container_child-2">
+        <h2 class="title-secondary"><span class="fa fa-server roffset2"> </span> Liste des servers</h2>
+        <div class="action-bar">
+            <span class="fa fa-plus-circle action-icon" style="color :darkgreen"> </span>
+            <span class="fa fa-edit action-icon" style="color :darkblue"> </span>
+        </div>
+        <div class="table">
+            <div class="table_header">
+                <span class="table_cell">Serveur name</span>
+                <span class="table_cell">Description</span>
+                <span class="table_cell">Nombre de resources</span>
+                <span class="table_cell">Nombre de mocks</span>
+            </div>
+            <div class="table_content">
+                <div class="table_row" ng-repeat="currentServer in serverController.servers track by $index" >
+                    <span class="table_cell">{{ currentServer.name }} </span>
+                    <span class="table_cell">{{ currentServer.description || '0'}}</span>
+                    <span class="table_cell">{{ currentServer.nbResources || '0'}}</span>
+                    <span class="table_cell">{{ currentServer.nbMocks || '0'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

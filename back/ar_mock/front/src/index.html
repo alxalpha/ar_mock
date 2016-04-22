@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="no-js" ng-app="ar_mock" ng-strict-di>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Armoni</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css assets/styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css assets/styles/main.css -->
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/font-awesome-4.5.0/css/font-awesome.min.css">
+    <!-- endbuild -->
+
+</head>
+<body class="no-js" ng-app="ar_mock" ng-strict-di>
+<!--[if lt IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<header>
+    <navigation></navigation>
+</header>
+
+<section class="main-container">
+    <div ui-view="content"></div>
+</section>
+
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/am_util/dist/am_util.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+
+<!-- build:js({.tmp,src/main/webapp/resources/dev}) scripts/app.js -->
+
+<script src="app/app.js"></script>
+
+<!-- server -->
+<script src="app/server/server.controller.js"></script>
+<script src="app/server/server.service.js"></script>
+<script src="app/server/server.js"></script>
+<!-- end server -->
+
+<!-- resource -->
+<script src="app/resource/resource.controller.js"></script>
+<script src="app/resource/resource.service.js"></script>
+<script src="app/resource/resource.js"></script>
+<!-- end resource -->
+
+<!-- mock -->
+<script src="app/mock/mock.controller.js"></script>
+<script src="app/mock/mock.service.js"></script>
+<script src="app/mock/mock.js"></script>
+<!-- end mock -->
+
+
+<!-- home -->
+<script src="app/home/home.controller.js"></script>
+<script src="app/home/home.service.js"></script>
+<script src="app/home/home.js"></script>
+<!-- end home -->
+
+
+<script src="app/navigation/navigation.directive.js"></script>
+
+
+<!-- endbuild -->
+</body>
+</html>

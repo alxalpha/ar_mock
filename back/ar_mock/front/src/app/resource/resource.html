@@ -1,0 +1,73 @@
+
+<h1 class="title-page">Resource manager</h1>
+
+<section class="container">
+
+    <div class="container_child-1" style="max-width:500px;background-color : #555;">
+        <form name="requestMockForm" >
+            <span class="fa fa-arrow-circle-o-left" style="position:absolute;top:5px;right:5px;font-size:1.3em"></span>
+            <h2 class="title-secondary"> Ajouter un Resource </h2>
+            <div style="margin-top:50px">
+                <div class="voffset2">
+                    <input  type="text" name="name" class="input-url" ng-model="resourceController.resourceToAdd.domain" ng-change="urlBuilder()" placeholder="Resource name"/>
+                </div>
+                 <div class="voffset2">
+                    <input  type="text" name="protocol" class="input-url" ng-model="resourceController.resourceToAdd.protocol" ng-change="urlBuilder()" placeholder="Hit the protocol"/>
+                </div>
+                <div class="voffset2">
+                    <input  type="text" name="port" class="input-url" ng-model="resourceController.resourceToAdd.port" ng-change="urlBuilder()" placeholder="Hit the port"/>
+                </div>
+                   <div class="voffset2">
+                    <input  type="text" name="method" class="input-url" ng-model="resourceController.resourceToAdd.method" ng-change="urlBuilder()" placeholder="Hit your method"/>
+                </div>
+                <div class="voffset2">
+                    <input  type="text" name="serverId" class="input-url" ng-model="resourceController.resourceToAdd.server" ng-change="urlBuilder()" placeholder="Hit your server name"/>
+                </div>
+                <div class="voffset2"  ng-repeat="currentPathParam in resourceController.resourceToAdd.pathParams track by $index" >
+                    <input type="text"name="pathParam[$index]" class="input-url" ng-change="urlBuilder()" ng-click="handleParamsOnClick(resourceController.resourceToAdd.pathParams,$index)" ng-model="resourceController.resourceToAdd.pathParams[$index].name" placeholder="Hit your path param {{ $index +1}}"/>
+                </div>
+                <div class="voffset2" ng-repeat="currentQueryParam in resourceController.resourceToAdd.queryParams  track by $index" >
+                    <input type="text" name="queryParam[$index]" class="input-url" ng-change="urlBuilder()" ng-click="handleParamsOnClick(resourceController.resourceToAdd.queryParams,$index)" ng-model="resourceController.resourceToAdd.queryParams[$index].name" placeholder="Hit your query param {{ $index +1}}"/>
+                </div>
+
+                 <div class="voffset2">
+                    <input  type="text" name="url" class="input-url" ng-model="url" placeholder="" ng-change="handleUrlChange()"/>
+                </div>
+
+                <div class="voffset2" style="text-align:right">
+                    <input type="submit" class="btn"  value="Valider" ng-click="onAddResource()"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container_child-2">
+        <h2 class="title-secondary"><span class="fa fa-resource roffset2"> </span> Liste des Resources</h2>
+        <div class="action-bar">
+            <span class="fa fa-plus-circle action-icon" style="color :darkgreen"> </span>
+            <span class="fa fa-edit action-icon" style="color :darkblue"> </span>
+        </div>
+        <div class="table">
+            <div class="table_header">
+                <span class="table_cell">domain</span>
+                <span class="table_cell">Serveur name</span>
+                <span class="table_cell">Port</span>
+                <span class="table_cell">Method</span>
+                <span class="table_cell">Url</span>
+                <span class="table_cell">Nombre de mocks</span>
+            </div>
+            <div class="table_content">
+                <div class="table_row" ng-repeat="currentResource in resourceController.resources track by $index" >
+                    <span class="table_cell">{{ currentResource.domain }} </span>
+                    <span class="table_cell">{{ currentResource.server.name }} </span>
+                    <span class="table_cell">{{ currentResource.port }} </span>
+                    <span class="table_cell">{{ currentResource.method }} </span>
+                    <span class="table_cell">{{ getUrlFromResource(currentResource) }} </span>
+                    <span class="table_cell">{{ currentResource.nbMocks || '0'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
